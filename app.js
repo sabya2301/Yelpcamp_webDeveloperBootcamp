@@ -13,7 +13,10 @@ var passport 			  = require("passport"),
 	passportLocalMongoose = require("passport-local-mongoose"),
 	User 				  = require("./models/user.js");
 
+
+var port = process.env.PORT || 3000;
 // seedDB();
+
 
 mongoose.connect("mongodb://localhost:27017/yelp_camp", {useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false } );
 mongoose.set('useUnifiedTopology', true);
@@ -355,7 +358,7 @@ function checkForCommentDeletion(req, res, next){
 }
 
 
-app.listen(3000, function(){
+app.listen(port, function(){
 	console.log("Yelpcamp server has started");
 });
 
