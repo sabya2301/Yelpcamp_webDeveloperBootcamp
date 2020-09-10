@@ -18,15 +18,31 @@ var port = process.env.PORT || 3000;
 // seedDB();
 
 
-mongoose.connect("mongodb+srv://m001-student:m001-mongodb-basics@sandbox.jbc3i.mongodb.net/yelp_camp?retryWrites=true&w=majority", 
-	{useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false } );
+mongoose.connect('mongodb+srv://m001-student:m001-mongodb-basics@sandbox.jbc3i.mongodb.net/yelp_camp?retryWrites=true&w=majority', 
+	{useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true, useFindAndModify: false
+}).then(() =>{
+	console.log("Connected to DB!");
+}).catch(err =>{
+	console.log(err.message);
+});
+
+
+// const MongoClient = require('mongodb').MongoClient;
+// const uri = "mongodb+srv://m001-student:m001-mongodb-basics@sandbox.jbc3i.mongodb.net/yelp_camp?retryWrites=true&w=majority";
+// const client = new MongoClient(uri, { useNewUrlParser: true });
+// client.connect(err => {
+//   const collection = client.db("test").collection("devices");
+//   // perform actions on the collection object
+//   client.close();
+// });
+
+
 mongoose.set('useUnifiedTopology', true);
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(__dirname + "/public"));
 app.use(methodOverride("_method"));
 app.use(flash());
 
-mongodb+srv://m001-student:@sandbox.jbc3i.mongodb.net/<dbname>?retryWrites=true&w=majority
 //PASSPORT CONFIGURATION
 app.use(require("express-session")({
 	secret: "Dont have a clue",
