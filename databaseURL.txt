@@ -1,0 +1,1 @@
+'mongodb+srv://m001-student:m001-mongodb-basics@sandbox.jbc3i.mongodb.net/yelp_camp?retryWrites=true&w=majority'

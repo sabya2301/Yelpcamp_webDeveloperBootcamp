@@ -17,8 +17,8 @@ var passport 			  = require("passport"),
 var port = process.env.PORT || 3000;
 // seedDB();
 console.log(process.env.DATABASEURL);
-var url = process.env.DATABASEURL || 'mongodb://localhost/yelp_camp';
-mongoose.connect(process.env.DATABASEURL, 
+var DBurl = process.env.DATABASEURL || 'mongodb://localhost/yelp_camp';
+mongoose.connect(DBurl, 
 	{useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true, useFindAndModify: false
 }).then(() =>{
 	console.log("Connected to DB!");
