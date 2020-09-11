@@ -7,7 +7,7 @@ var seedDB 				  = require("./seeds.js");
 var Comment 			  = require("./models/comment.js");
 var methodOverride 		  = require("method-override");
 var flash				  = require("connect-flash");
-
+require("dotenv").config();
 var passport 			  = require("passport"),
 	LocalStrategy 		  = require("passport-local"),
 	passportLocalMongoose = require("passport-local-mongoose"),
@@ -16,9 +16,9 @@ var passport 			  = require("passport"),
 
 var port = process.env.PORT || 3000;
 // seedDB();
-
-
-mongoose.connect('mongodb+srv://m001-student:m001-mongodb-basics@sandbox.jbc3i.mongodb.net/yelp_camp?retryWrites=true&w=majority', 
+console.log(process.env.DATABASEURL);
+var url = process.env.DATABASEURL || 'mongodb://localhost/yelp_camp';
+mongoose.connect(process.env.DATABASEURL, 
 	{useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true, useFindAndModify: false
 }).then(() =>{
 	console.log("Connected to DB!");
